@@ -7,7 +7,7 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 // Use users router
-app.use('/api/users', usersRouter);
+app.use('/api', usersRouter);
 
 // Basic route
 app.get('/', (req, res) => {

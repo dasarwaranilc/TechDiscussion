@@ -13,8 +13,8 @@ const config = {
 (async () => {
   try {
     await sql.connect(config);
-    const result = await sql.query`select TOP 10 * from MyTable`;
-    console.dir(result);
+    const result = await sql.query`select TOP 10 * from dbo.tbl_users`;
+    console.dir(result.recordset);
   } catch (err) {
     console.error(err);
   }
