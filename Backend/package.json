@@ -9,5 +9,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "express": "^5.2.1",
+    "mssql": "^12.2.0"
+  }
 }
