@@ -24,3 +24,10 @@ Tables:
 4. teacher_dept_mapping [id{sequent_no}, teacher_id, dept_id]
 5. Student_Payment [id{sequent_no}, stud_id, payment_type (Full/EMI), Amount, transaction_date, transaction_by ]
 6. teacher_Payment [id{sequent_no}, teach_id, payment_type (Salary), Salary ,PaidAmount, transaction_date, transaction_by(admin)]
+
+
+*************// 28-01-26 //*************
+1. Explain Router
+2. Understanding on Async and await
+3. Local setup for MSSQL and Nodejs Code
+4. Push changes into github till local code setup with MSSQL.
