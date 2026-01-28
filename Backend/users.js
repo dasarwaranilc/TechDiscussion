@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const { context, sql } = require('./context');
@@ -6,6 +7,22 @@ const { context, sql } = require('./context');
 router.get('/users', async (req, res) => {
     try {
         const result = await context.get('SELECT * FROM tbl_users');
+        res.json(result);
+    } catch (err) {
+        res.status(500).send('Server Error');
+    }
+});
+
+// Get user by user_name
+router.get('/users/:user_name', async (req, res) => {
+    const { user_name } = req.params;
+    try {
+        const result = await context.get(
+            'SELECT * FROM tbl_users WHERE user_name = @user_name',
+            [
+                { name: 'user_name', type: sql.VarChar, value: user_name }
+            ]
+        );
         res.json(result);
     } catch (err) {
         res.status(500).send('Server Error');
