@@ -1,16 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const usersRouter = require('./users');
+
 const app = express();
-const port =3000;
+const PORT = 3000;
 
-app.use(bodyparser.json());
+app.use(bodyParser.json());
+// Use users router
+app.use('/api', usersRouter);
 
-app.get('/',(req,res)=> {
-    res.send('Hello Word!');
-
+// Basic route
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
 });
 
-app.listen(port,() =>{
-    console.log('server is running on http://localhost:${port}');
-
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
