@@ -1,23 +1,32 @@
-const sql = require('mssql/msnodesqlv8');
 
-const config = {
-  server: "KSHITIJA\sqlexpress",
-  database: "CoachingClass",
-  options: {
-    trustedConnection: true, // Set to true if using Windows Authentication
-    trustServerCertificate: true, // Set to true if using self-signed certificates
-  },
-  // driver: "ODBC Driver 18 for SQL Server", // Uncomment to use specific driver
-};
+const express = require('express');
+const router = express.Router();
+const { context, sql } = require('./context');
+// const {sql} = require('./config/db1');
+// Get all users
+router.get('/users', async (req, res) => {
+    try {
+        const result = await context.get('SELECT * FROM dbo.department');
+        res.json(result);
+    } catch (err) {
+        res.status(500).send('Server Error');
+    }
+});
 
-(async () => {
-  try {
-    await sql.connect(config);
-    const result = await sql.query`select TOP 10 * from dbo.department`;
-    console.dir(result.recordset);
-  } catch (err) {
-    console.error(err);
-  }
-})();
+// Get user by user_name
+router.get('/users/:user_name', async (req, res) => {
+    const { user_name } = req.params;
+    try {
+        const result = await context.get(
+            'SELECT * FROM dbo.department  WHERE user_name = @user_name',
+            [
+                { name: 'user_name', type: sql.VarChar, value: user_name }
+            ]
+        );
+        res.json(result);
+    } catch (err) {
+        res.status(500).send('Server Error');
+    }
+});
 
-module.exports = {sql};
+module.exports = router;
