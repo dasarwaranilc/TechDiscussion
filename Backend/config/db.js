@@ -1,9 +1,9 @@
 const sql = require('mssql');
 
 const config = {
-    user: 'admin',
-    password: 'admin',
-    server: 'DESKTOP-INSTJ3I',
+    user: 'Kshitija\kshit',
+    password: 'Kshitija\kshit',
+    server: 'KSHITIJA\sqlexpress',
     database: 'CachingClass',
     options: {
         encrypt: false,

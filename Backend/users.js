@@ -1,7 +1,7 @@
 const sql = require('mssql/msnodesqlv8');
 
 const config = {
-  server: "DESKTOP-INSTJ3I",
+  server: "KSHITIJA\sqlexpress",
   database: "CoachingClass",
   options: {
     trustedConnection: true, // Set to true if using Windows Authentication
@@ -13,7 +13,7 @@ const config = {
 (async () => {
   try {
     await sql.connect(config);
-    const result = await sql.query`select TOP 10 * from dbo.tbl_users`;
+    const result = await sql.query`select TOP 10 * from dbo.department`;
     console.dir(result.recordset);
   } catch (err) {
     console.error(err);
